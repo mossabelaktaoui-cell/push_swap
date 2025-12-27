@@ -12,34 +12,45 @@
 
 #include "push_swap.h"
 
-s_node	*fill_linked_list(char **argv, int argc)
+void    push_swap(s_node **stack_a, s_node **stack_b)
 {
-	s_node	*head;
-	int	i;
+    int	size;
 
-	if (!argv || argc <= 1)
-        	return (NULL);
-	i = 1;
-	head = NULL;
-	while (i < argc)
-	{
-		if (!ft_lstadd_back(&head, argv[i]))
-			return (NULL);
-		i++;
-	}
-	return (head);
+    size = get_stack_size(*stack_a);
+    if (size <= 1 || is_sorted(*stack_a))
+        return ;
+    if (size == 2)
+        sa(stack_a, 1);
+    else if (size == 3)
+        sort_three(stack_a);
+    else if (size <= 5)
+        sort_five(stack_a, stack_b);
+    else
+        sort_n_items(stack_a, stack_b);
 }
-void	ft_errors_print(void)
-{
-	write(3, "Error", 5);
-	write(1, "Error", 5);
-}
+
 int	main(int argc, char **argv)
 {
-	s_node	*head;
+	s_node	*stack_a;
+	s_node	*stack_b;
 
-	head = fill_linked_list(argv, argc);
-	if (!head)
-		return (ft_errors_print(), 0);
-	
+	if (argc < 2)
+        	return (0);
+	if (!ft_args_checker(argv))
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	stack_a = fill_linked_list(argv, argc);
+	if (!stack_a || !duplicate_checker(stack_a))
+	{
+		write(2, "Error\n", 6);
+		if (stack_a)
+			free_stack(&stack_a);
+		return (1);
+	}
+	stack_b = NULL;
+	push_swap(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }
