@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	ft_atoi(const char *number)
 {
-	int		i;
-	int		sign;
-	long	result;
+	int			i;
+	int			sign;
+	long long	result;
 
 	result = 0;
 	sign = 1;
@@ -30,13 +30,13 @@ int	ft_atoi(const char *number)
 	while (number[i] >= '0' && number[i] <= '9')
 	{
 		result = (result * 10) + (number[i] - '0');
-		if ((result > 2147483647 && sign == 1)
-			|| (result > 2147483648 && sign == -1))
-			return (write(2, "Error\n", 6), ERROR_NUM);
+		if ((result > INT_MAX && sign == 1)
+			|| (result > 2147483648L && sign == -1))
+			return (ERROR_NUM);
 		i++;
 	}
 	result *= sign;
-	if (result > 2147483647 || result < -2147483648)
+	if (result > INT_MAX || result < -2147483648L)
 		return (write(2, "Error\n", 6), ERROR_NUM);
 	return (result);
 }

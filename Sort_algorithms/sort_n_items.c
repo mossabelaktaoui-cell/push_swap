@@ -9,7 +9,7 @@
 /*   Updated: 2025/12/26 07:16:13 by mlaktaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	set_index(t_node *stack, int *array, int size)
 {
@@ -69,7 +69,7 @@ void	chunking(t_node **stack_a, t_node **stack_b)
 			pb(stack_a, stack_b);
 			i++;
 		}
-		else if ((*stack_a)-> index <= (range + i))
+		else if ((*stack_a)-> index < (range + i))
 		{
 			pb(stack_a, stack_b);
 			rb(stack_b, 1);

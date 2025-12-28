@@ -23,7 +23,7 @@ typedef struct t_node
 {
 	int				value;
 	int				index;
-	struct stack	*next;
+	struct t_node	*next;
 }	t_node;
 
 t_node	*find_max_node(t_node *stack);

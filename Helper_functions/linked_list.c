@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_node	*fill_linked_list(char **argv, int argc)
 {
@@ -49,7 +49,7 @@ int	ft_lstadd_back(t_node **list, char *number)
 	t_node	*current;
 	int		value;
 
-	if (!list || !number || !ft_args_checker(number))
+	if (!list || !number)
 		return (0);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)

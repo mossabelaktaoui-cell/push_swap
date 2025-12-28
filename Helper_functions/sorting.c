@@ -6,11 +6,11 @@
 /*   By: mlaktaou <mlaktaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 21:17:50 by mlaktaou          #+#    #+#             */
-/*   Updated: 2025/12/27 21:45:20 by mlaktaou         ###   ########.fr       */
+/*   Updated: 2025/12/27 13:14:19 by mlaktaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	is_sorted(t_node *stack)
 {
