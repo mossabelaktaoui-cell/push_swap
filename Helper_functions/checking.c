@@ -41,22 +41,22 @@ long	ft_atoi(const char *number)
 	return (result);
 }
 
-int	ft_args_checker(char **argv)
+int	ft_args_checker(char **numbers_list)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (numbers_list[i])
 	{
 		j = 0;
-		if (argv[i][j] == '+' || argv[i][j] == '-')
+		if (numbers_list[i][j] == '+' || numbers_list[i][j] == '-')
 			j++;
-		if (argv[i][j] == '\0')
+		if (numbers_list[i][j] == '\0')
 			return (0);
-		while (argv[i][j])
+		while (numbers_list[i][j])
 		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
+			if (numbers_list[i][j] < '0' || numbers_list[i][j] > '9')
 				return (0);
 			j++;
 		}
@@ -85,13 +85,25 @@ int	duplicate_checker(t_node *stack)
 	return (1);
 }
 
-char	**handle_input(int argc, char **argv)
+t_node	*handle_input(int argc, char **argv)
 {
-	char	**result;
+	char	**numbers_list;
+	t_node	*stack;
 
 	if (argc == 2)
-		result = ft_split(argv[1], ' ');
+		numbers_list = ft_split(argv[1], ' ');
 	else
-		result = argv + 1;
-	return (result);
+		numbers_list = argv + 1;
+	if (!numbers_list || !ft_args_checker(numbers_list))
+	{
+		if (numbers_list != argv + 1)
+			free_array(numbers_list);
+		return (NULL);
+	}
+	stack = fill_linked_list(numbers_list);
+	if (numbers_list != argv + 1)
+		free_array(numbers_list);
+	if (!stack || !duplicate_checker(stack))
+		return (free_stack(&stack), NULL);
+	return (stack);
 }

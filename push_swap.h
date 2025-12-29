@@ -27,7 +27,8 @@ typedef struct t_node
 }	t_node;
 
 t_node	*find_max_node(t_node *stack);
-t_node	*fill_linked_list(char **argv, int argc);
+t_node	*fill_linked_list(char **numbers_list);
+t_node	*handle_input(int argc, char **argv);
 int		ft_args_checker(char **argv);
 int		find_max_index(t_node *stack);
 int		find_min_index(t_node *stack);
@@ -40,7 +41,7 @@ long		ft_atoi(const char *number);
 void	sort_array(int *array, int size);
 void	free_stack(t_node **stack);
 char	**ft_split(char const *s, char c);
-char	**handle_input(int argc, char **argv);
+void	free_array(char **array);
 
 int		indexing(t_node *stack);
 void	set_index(t_node *stack, int *array, int size);

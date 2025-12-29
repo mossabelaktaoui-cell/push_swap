@@ -6,11 +6,11 @@
 /*   By: mlaktaou <mlaktaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:17:48 by mlaktaou          #+#    #+#             */
-/*   Updated: 2025/12/28 16:17:49 by mlaktaou         ###   ########.fr       */
+/*   Updated: 2025/12/29 02:56:59 by mlaktaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	count_words(char const *s, char c)
 {
@@ -74,17 +74,17 @@ char	**fill_array(int words_num, char const *s, char c, char **array)
 	return (array);
 }
 
-static void	free_arr(char **arr)
+void	free_array(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (array[i])
 	{
-		free(arr[i]);
+		free(array[i]);
 		i++;
 	}
-	free(arr);
+	free(array);
 }
 
 char	**ft_split(char const *s, char c)
@@ -102,7 +102,7 @@ char	**ft_split(char const *s, char c)
 	tmp = fill_array(words_num, s, c, array);
 	if (!tmp)
 	{
-		free_arr(array);
+		free_array(array);
 		return (NULL);
 	}
 	return (array);

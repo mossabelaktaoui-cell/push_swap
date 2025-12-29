@@ -12,17 +12,17 @@
 
 #include "../push_swap.h"
 
-t_node	*fill_linked_list(char **argv, int argc)
+t_node	*fill_linked_list(char **numbers_list)
 {
 	t_node	*stack;
 	int		i;
 
-	i = 1;
+	i = 0;
 	stack = NULL;
-	while (i < argc)
+	while (numbers_list[i])
 	{
-		if (!ft_lstadd_back(&stack, argv[i]))
-			return (free_stack(&stack), NULL);
+		if (!ft_lstadd_back(&stack, numbers_list[i]))
+			return (NULL);
 		i++;
 	}
 	return (stack);
@@ -45,13 +45,13 @@ int	get_stack_size(t_node *stack)
 	return (count);
 }
 
-int	ft_lstadd_back(t_node **list, char *number)
+int	ft_lstadd_back(t_node **stack, char *number)
 {
 	t_node	*new_node;
 	t_node	*current;
 	long		value;
 
-	if (!list || !number)
+	if (!stack || !number)
 		return (0);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
@@ -61,11 +61,11 @@ int	ft_lstadd_back(t_node **list, char *number)
 		return (free(new_node), 0);
 	new_node -> value = value;
 	new_node -> next = NULL;
-	if (*list == NULL)
-		*list = new_node;
+	if (*stack == NULL)
+		*stack = new_node;
 	else
 	{
-		current = *list;
+		current = *stack;
 		while (current -> next != NULL)
 			current = current -> next;
 		current -> next = new_node;

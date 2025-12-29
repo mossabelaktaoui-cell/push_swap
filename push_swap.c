@@ -33,25 +33,18 @@ int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	char	**handled_list;
 
-	if (argc < 2)
+	if (argc < 2 || (argc == 2 && !argv[1][0]))
 		return (0);
-	handled_list = handle_input(argc, argv);
-	if (!ft_args_checker(handled_list))
+	stack_a = handle_input(argc, argv);
+	if (!stack_a)
 	{
 		write(2, "Error\n", 6);
-		return (1);
-	}
-	stack_a = fill_linked_list(handled_list, argc);
-	if (!stack_a || !duplicate_checker(stack_a))
-	{
-		write(2, "Error\n", 6);
-		free_stack(&stack_a);
 		return (1);
 	}
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b);
-	free_stack(&stack_a);
 	free_stack(&stack_b);
+	free_stack(&stack_b);
+	return (0);
 }
