@@ -6,11 +6,11 @@
 /*   By: mlaktaou <mlaktaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 16:17:48 by mlaktaou          #+#    #+#             */
-/*   Updated: 2025/12/29 02:56:59 by mlaktaou         ###   ########.fr       */
+/*   Updated: 2025/12/29 09:01:51 by mlaktaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	count_words(char const *s, char c)
 {

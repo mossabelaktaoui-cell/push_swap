@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	sort_five(t_node **stack_a, t_node **stack_b)
 {
@@ -24,13 +24,13 @@ void	sort_five(t_node **stack_a, t_node **stack_b)
 		min_index = find_min_index(*stack_a);
 		size = get_stack_size(*stack_a);
 		if (min_index == 0)
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 1);
 		else if (min_index <= size / 2)
 			ra(stack_a, 1);
 		else
 			rra(stack_a, 1);
 	}
 	sort_three(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	pa(stack_a, stack_b, 1);
+	pa(stack_a, stack_b, 1);
 }

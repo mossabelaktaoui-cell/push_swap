@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	ra(t_node **stack_a, int print)
 {
@@ -50,10 +50,11 @@ void	rb(t_node **stack_b, int print)
 	}
 }
 
-void	rr(t_node **stack_a, t_node **stack_b)
+void	rr(t_node **stack_a, t_node **stack_b, int print)
 {
 	ra(stack_a, 0);
 	rb(stack_b, 0);
-	if ((*stack_a && (*stack_a)-> next) || (*stack_b && (*stack_b)-> next))
+	if (((*stack_a && (*stack_a)-> next) || (*stack_b && (*stack_b)-> next))
+	&& print)
 		write(1, "rr\n", 3);
 }
